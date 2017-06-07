@@ -71,10 +71,6 @@ var todoList = {
   }
 };
 
-var displayTodosButton = document.getElementById('displayTodosButton');
-var displayToPage = document.getElementById('displayToPage');
-var toggleAllButton = document.getElementById("toggleAllButton");
-debugger;
 function displayTodos () {
   var display = ''
   for (var i = 0; i < todoList.todos.length; i++) {
@@ -87,12 +83,13 @@ function displayTodos () {
   return display
 }
 
-displayTodosButton.addEventListener('click', function() {
-  var callLists = displayTodos();
-  displayToPage.innerHTML = callLists
-});
-
-toggleAllButton.addEventListener('click', function() {
-  todoList.toggleAll();
-  displayToPage.innerHTML = displayTodos();
-});
+var handler = {
+  displayTodos: function() {
+    var callLists = displayTodos();
+    displayToList.innerHTML = callLists
+  },
+  toggleAllButton: function() {
+    todoList.toggleAll();
+    displayToList.innerHTML = displayTodos();
+  }
+}
