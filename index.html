@@ -9,8 +9,17 @@
   <body>
     <h1>ToDo List</h1>
     <ol>
-      <button onclick="handler.displayTodos()"> Display ToDo Tasks </button>
-      <button onclick="handler.toggleAllButton()"> Toggle All Tasks </button>
+      <div>
+        <button onclick="handler.displayTodos()"> Display ToDo Tasks </button>
+        <button onclick="handler.toggleAllButton()"> Toggle All Tasks </button>
+      </div>
+      <div>
+        .
+      </div>
+      <div>
+        <button onclick="handler.addATodo()"> Add a ToDo </button>
+        <input id="addTodoInput", type="text">
+      </div>
     </ol>
     <ol id='displayToList'>
       <li>No ToDo Tasks</li>

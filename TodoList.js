@@ -90,6 +90,12 @@ var handler = {
   },
   toggleAllButton: function() {
     todoList.toggleAll();
-    displayToList.innerHTML = displayTodos();
+    handler.displayTodos();
+  },
+  addATodo: function() {
+    var addTodoInput = document.getElementById('addTodoInput')
+    todoList.addTodo(addTodoInput.value);
+    addTodoInput.value = '';
+    handler.displayTodos();
   }
 }
