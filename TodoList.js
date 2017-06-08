@@ -88,10 +88,6 @@ var handler = {
     var callLists = displayTodos();
     displayToList.innerHTML = callLists
   },
-  toggleAllButton: function() {
-    todoList.toggleAll();
-    handler.displayTodos();
-  },
   addATodo: function() {
     var addTodoInput = document.getElementById('addTodoInput');
     todoList.addTodo(addTodoInput.value);
@@ -101,7 +97,25 @@ var handler = {
   changeTodo: function() {
     var changeTodoInput = document.getElementById('changeTodoInput');
     var changeTodoPosition = document.getElementById('changeTodoPosition');
-    todoList.todos[changeTodoPosition.value - 1].todoTask = changeTodoInput.value;
+    todoList.todos[changeTodoPosition.valueAsNumber - 1].todoTask = changeTodoInput.value;
+    handler.displayTodos();
+    changeTodoPosition.value = '';
+    changeTodoInput.value = '';
+  },
+  deleteTodo: function() {
+    var deleteTodoPosition = document.getElementById('deleteTodoPosition');
+    todoList.deleteTodo(deleteTodoPosition.valueAsNumber -1);
+    handler.displayTodos();
+    deleteTodoPosition.value = '';
+  },
+  toggleCompleted: function() {
+    var toggleCompletedPositionInput = document.getElementById('toggleCompletedPositionInput');
+    todoList.toggleCompleted(toggleCompletedPositionInput.valueAsNumber -1);
+    handler.displayTodos();
+    toggleCompletedPositionInput.value = '';
+  },
+  toggleAllButton: function() {
+    todoList.toggleAll();
     handler.displayTodos();
   }
 }
