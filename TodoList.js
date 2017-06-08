@@ -93,9 +93,15 @@ var handler = {
     handler.displayTodos();
   },
   addATodo: function() {
-    var addTodoInput = document.getElementById('addTodoInput')
+    var addTodoInput = document.getElementById('addTodoInput');
     todoList.addTodo(addTodoInput.value);
     addTodoInput.value = '';
+    handler.displayTodos();
+  },
+  changeTodo: function() {
+    var changeTodoInput = document.getElementById('changeTodoInput');
+    var changeTodoPosition = document.getElementById('changeTodoPosition');
+    todoList.todos[changeTodoPosition.value - 1].todoTask = changeTodoInput.value;
     handler.displayTodos();
   }
 }
