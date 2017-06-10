@@ -17,20 +17,16 @@ var todoList = {
       todoTask: todoText,
       completed: false
     });
-    view.displayTodos();
   },
   changeTodo: function(position, NewTodoText) {
     this.todos[position].todoTask = NewTodoText;
-    view.displayTodos();
   },
   deleteTodo: function(position) {
     this.todos.splice(position, 1);
-    view.displayTodos();
   },
   toggleCompleted: function(position) {
     var todo = this.todos[position];
     todo.completed = !todo.completed;
-    view.displayTodos();
   },
   toggleAll: function() {
     var totalTodos = this.todos.length
@@ -53,21 +49,8 @@ var todoList = {
           this.todos[i].completed = true;
         }
     }
-    view.displayTodos();
   }
 };
-
-function displayTodos () {
-  var display = ''
-  for (var i = 0; i < todoList.todos.length; i++) {
-    if (todoList.todos[i].completed === true) {
-      display = display + "<li/>" + "(x) " + todoList.todos[i].todoTask + "</li>";
-    }else {
-      display = display + "<li/>" + "(  ) " + todoList.todos[i].todoTask + "</li>";
-    }
-  }
-  return display
-}
 
 var handler = {
   addATodo: function() {
