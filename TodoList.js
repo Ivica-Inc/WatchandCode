@@ -108,12 +108,15 @@ var view = {
     deleteButton.className = 'deleteButton';
     return deleteButton;
   },
-};
+  setUpEventListener: function() {
+    var todoUi = document.querySelector('ul');
 
-var enableDeleteButton = document.querySelector('ul');
-enableDeleteButton.addEventListener('click', function(event){
-    if (event.target.className === 'deleteButton') {
-      var position = parseInt(event.target.parentElement.id);
-      handler.deleteTodo(position);
-    }
-})
+    todoUi.addEventListener('click', function(event){
+      if (event.target.className === 'deleteButton') {
+          var position = parseInt(event.target.parentElement.id);
+          handler.deleteTodo(position);
+        }
+    })
+  }
+};
+view.setUpEventListener();
