@@ -30,25 +30,23 @@ var todoList = {
   },
   toggleAll: function() {
     var totalTodos = this.todos.length
-    var allTrue = 0;
+    var completedTodos = 0;
 
     // Get the number of completed todos
-    for (var i = 0; i < totalTodos; i++) {
-      if (this.todos[i].completed === true) {
-        allTrue++;
+    this.todos.forEach(function(task) {
+      if(task.completed === true) {
+        completedTodos++;
       }
-    }
+    })
+    this.todos.forEach(function(task) {
     // if all todo items are set to completed
-    if (allTrue === totalTodos) {
-        for (i = 0; i < totalTodos; i++) {
-          this.todos[i].completed = false;
-        }
+      if (completedTodos === totalTodos) {
+        task.completed = false;
     // otherwise make all completed
-    }else {
-      for (i = 0; i < totalTodos; i++) {
-          this.todos[i].completed = true;
-        }
-    }
+      }else {
+        task.completed = true;
+      }
+    })
   }
 };
 
@@ -87,20 +85,21 @@ var view = {
   displayTodos: function() {
     var todoUl = document.querySelector('ul');
     todoUl.innerHTML = '';
-    for (var i = 0; i < todoList.todos.length; i++) {
+    todoList.todos.forEach(function(task, position) {
       var todoLi = document.createElement('li');
       var displayTasks = '';
+      var idNumber = 0;
 
-      if (todoList.todos[i].completed === true) {
-        displayTasks = "(x)" + todoList.todos[i].todoTask + ' ';
+      if(task.completed === true) {
+        displayTasks = "(x)" + task.todoTask + ' ';
       }else {
-        displayTasks = "( )" + todoList.todos[i].todoTask + ' ';
+        displayTasks = "( )" + task.todoTask + ' ';
       }
-      todoLi.id = i;
+      todoLi.id = position;
       todoLi.textContent = displayTasks
       todoLi.appendChild(this.createDeleteButton())
       todoUl.appendChild(todoLi);
-    }
+    }, this)
   },
   createDeleteButton: function() {
     var deleteButton = document.createElement('button');
@@ -119,4 +118,5 @@ var view = {
     })
   }
 };
+
 view.setUpEventListener();
