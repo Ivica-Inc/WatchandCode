@@ -1,17 +1,5 @@
 var todoList = {
-  todos: [{
-    todoTask: 'first',
-    completed: false
-  },
-  {
-    todoTask: 'second',
-    completed: false
-  },
-  {
-    todoTask: 'third',
-    completed: false
-  }
-],
+  todos: [],
   addTodo: function(todoText) {
     this.todos.push({
       todoTask: todoText,
